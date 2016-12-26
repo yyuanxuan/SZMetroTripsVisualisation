@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;background-color:#3F485B" >
+<head>
+    <meta charset="UTF-8">
+    <title>"Echarts map demo"</title>
+</head>
+
+<body style="height: 98.3%;">
+
+<script src="js/echarts.js"></script>
+<script src="js/shenzhen.js"></script>
+<script src="js/water.js"></script>
+<script src="js/jquery-3.1.1.js"></script>
+
+<div id="main" style="height:100%; ">
+    <script>
+        var geoCoordmap={
+            'Shenzhen University Station':[113.944173,22.538667],
+            'Futian Checkpoint Station':[114.069273,22.515737]
+        }
+
+        var TripData=[
+            [{name:'Shenzhen University Station'},{name:'Futian Checkpoint Station',value:90}]
+        ]
+        var chart = echarts.init(document.getElementById('main'));
+        chart.showLoading(
+                {
+                    text: 'loading . . .',
+                    color: '#008BCA',
+                    maskColor: '#242D33',
+                    textColor: '#3279AD',
+
+
+                }
+
+        );
+
+
+        $.getJSON("json/road_clip.json",function (roaddata) {
+            $.getJSON("json/metro.json",function (metrodata) {
+
+                var chart = echarts.init(document.getElementById('main'));
+
+
+
+                chart.hideLoading();
+
+
+                var chart = echarts.init(document.getElementById('main'));
+
+                option= {
+                    backgroundColor: '#2E323C',
+                    geo: {
+                        map: 'shenzhen',
+                        coordinateSystem: 'geo',
+                        zlevel: 1,
+                        silent: true,
+                        roam: true,
+                        zoom: 2.5,
+                        scaleLimit:{
+                          max:6, min:1,
+                        },
+                        itemStyle: {
+                            normal: {
+                                areaColor: '#1D1E22',
+                                borderColor: '#4C5870',
+                                borderWidth:2
+                            }
+                        },
+                        aspectScale: 1,
+
+
+                        show: true
+                    },
+
+
+                    series: [
+                        {
+                            name: 'water',
+                            type: 'map',
+                            map: 'water',
+                            coordinateSystem: 'geo',
+                            zlevel: 1,
+                            silent: true,
+                            roam: true,
+                            zoom: 2.5,
+                            scaleLimit:{
+                                max:6, min:1,
+                            },
+                            itemStyle: {
+                                normal: {
+                                    areaColor: '#125488',
+                                    borderColor: '#125488'
+                                }
+                            },
+                            aspectScale: 1,//aspectScale设置为1时,没有额外的投影变形,保持wgs84
+                        },
+
+
+
+                        {
+                            name: 'roads',
+                            type: 'lines',
+                            coordinateSystem: 'geo',
+                            polyline:true,
+                            large:true,
+                            silent: true,
+                            zlevel: 1,
+                            data: roaddata.lines,
+                            lineStyle: {
+                                normal: {
+                                    color: '#1F2B40',
+                                    width: 0.5,
+                                    opacity:1
+
+                                }
+                            }
+
+                        },
+
+                        {
+                            name: 'metro',
+                            type: 'lines',
+                            coordinateSystem: 'geo',
+                            polyline:true,
+                            large:true,
+                            zlevel: 1,
+                            data: metrodata.lines,
+                            silent: true,
+
+                            lineStyle: {
+                                normal: {
+                                    color: '#2B4162',
+                                    width: 4,
+                                    opacity: 1,
+                                }
+                            }
+                        },
+
+                        {
+                            name: 'Trips',
+                            type: 'lines',
+                            coordinateSystem: 'geo',
+                            zlevel: 2,
+                            data: [{
+                                coords: [
+                                    [113.919996067412, 22.5353991884814],
+                                    [114.102696528077, 22.5444833134091]
+                                ],
+
+                                lineStyle: {
+                                    normal: {
+                                        color: '#FFFFFF',
+                                        width: 0.2,
+                                        opacity: 0.1,
+                                        curveness: 0.2
+                                    }
+                                }
+                            },
+                                {
+                                    coords: [
+                                        [113.91482924003, 22.4914370059264],
+                                        [114.102696528077, 22.5444833134091]
+                                    ],
+
+                                    lineStyle: {
+                                        normal: {
+                                            color: '#FFFFFF',
+                                            width: 0.6,
+                                            opacity: 0.1,
+                                            curveness: 0.2
+                                        }
+                                    }
+                                }
+
+                            ],
+
+                            effect: {
+                                show: true,
+                                period: 3.5,
+                                symbol: 'circle',
+                                symbolSize: 2.4,
+                                color: '#FFCC66',
+                                trailLength:0.1
+                            },
+
+                        },
+                    ]
+                }
+
+
+
+                chart.setOption(option);
+                window.onresize = function () {
+                    chart.resize(); //使第一个图表适应
+                }
+
+
+
+
+
+
+            })
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</div>
+
+
+
+
+
+
+</body>
+
+
+
+</html>

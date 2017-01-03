@@ -137,56 +137,91 @@
                             }
                         },
 
-                        {
-                            name: 'Trips',
-                            type: 'lines',
-                            coordinateSystem: 'geo',
-                            zlevel: 2,
-                            data: [{
-                                coords: [
-                                    [113.919996067412, 22.5353991884814],
-                                    [114.102696528077, 22.5444833134091]
-                                ],
+                            {
+                                name: 'Travel1',
+                                type: 'lines',
+                                coordinateSystem: 'geo',
 
+                                zlevel: 2,
+                                data: flowdata.level1trips,
                                 lineStyle: {
                                     normal: {
                                         color: '#FFFFFF',
-                                        width: 0.2,
-                                        opacity: 0.1,
-                                        curveness: 0.2
+                                        width: 0.3,
+                                        opacity: 0.15,
+                                        curveness: 0.25
                                     }
-                                }
-                            },
-                                {
-                                    coords: [
-                                        [113.91482924003, 22.4914370059264],
-                                        [114.102696528077, 22.5444833134091]
-                                    ],
+                                },
 
-                                    lineStyle: {
-                                        normal: {
-                                            color: '#FFFFFF',
-                                            width: 0.6,
-                                            opacity: 0.1,
-                                            curveness: 0.2
-                                        }
-                                    }
-                                }
-
-                            ],
-
-                            effect: {
-                                show: true,
-                                period: 3.5,
-                                symbol: 'circle',
-                                symbolSize: 2.4,
-                                color: '#FFCC66',
-                                trailLength:0.1
+                                effect: {
+                                    show: true,
+                                    period: 4,
+                                    symbol: 'circle',
+                                    symbolSize: 4,
+                                    color: '#F48B31',
+                                    trailLength:0.01,
+                                    constantSpeed:50
+                                },
                             },
 
-                        },
-                    ]
-                }
+                            {
+                                name: 'Travel2',
+                                type: 'lines',
+                                coordinateSystem: 'geo',
+
+                                zlevel: 2,
+                                data: flowdata.level2trips,
+                                lineStyle: {
+                                    normal: {
+                                        color: '#FFFFFF',
+                                        width: 0.1,
+                                        opacity: 0.15,
+                                        curveness: 0.25
+                                    }
+                                },
+
+                                effect: {
+                                    show: true,
+                                    period: 3,
+                                    symbol: 'circle',
+                                    symbolSize: 2,
+                                    color: '#FFCC66',
+                                    trailLength:0.01,
+                                    constantSpeed:50
+                                },
+                            },
+
+
+                            {
+                                name: 'Travel3',
+                                type: 'lines',
+                                coordinateSystem: 'geo',
+
+                                zlevel: 3,
+                                data: flowdata.level3trips,
+                                lineStyle: {
+                                    normal: {
+                                        color: '#FFFFFF',
+                                        width: 0.1,
+                                        opacity: 0.4,
+                                        curveness: 0.25
+                                    }
+                                },
+
+                                effect: {
+                                    show: true,
+                                    period: 4,
+                                    symbol: 'circle',
+                                    symbolSize: 2,
+                                    color: '#E6CC8F',
+                                    trailLength:0,
+                                    constantSpeed:50
+                                },
+                            },
+
+
+                        ]
+                    }
 
 
 

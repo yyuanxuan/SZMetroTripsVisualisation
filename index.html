@@ -50,7 +50,7 @@
                     var chart = echarts.init(document.getElementById('main'));
 
                     option= {
-                        backgroundColor: '#2E323C',
+                        backgroundColor: '#100F14',
                         geo: {
                             map: 'shenzhen',
                             coordinateSystem: 'geo',
@@ -64,7 +64,7 @@
                             },
                             itemStyle: {
                                 normal: {
-                                    areaColor: '#1D1E22',
+                                    areaColor: '#000000',
                                     borderColor: '#4C5870',
                                     borderWidth:2
                                 }
@@ -81,26 +81,7 @@
 
 
 
-                            {
-                                name: 'roads',
-                                type: 'lines',
-                                coordinateSystem: 'geo',
-                                polyline:true,
-                                large:true,
-                                silent: true,
-                                zlevel: 1,
-                                data: roaddata.lines,
-                                lineStyle: {
-                                    normal: {
-                                        color: '#1F2B40',
-                                        width: 0.7,
-                                        opacity:0.8
 
-                                    }
-                                },
-                                progressiveThreshold: 500,
-                                progressive: 200
-                            },
 
                             {
                                 name: 'water',
@@ -117,12 +98,34 @@
                                 },
                                 itemStyle: {
                                     normal: {
-                                        areaColor: '#125488',
-                                        borderColor: '#125488'
+                                        areaColor: '#003366',
+                                        borderColor: '#000928'
                                     }
                                 },
                                 aspectScale: 1,//aspectScale设置为1时,没有额外的投影变形,保持wgs84
                             },
+
+                            {
+                                name: 'roads',
+                                type: 'lines',
+                                coordinateSystem: 'geo',
+                                polyline:true,
+                                large:true,
+                                silent: true,
+                                zlevel: 1,
+                                data: roaddata.lines,
+                                lineStyle: {
+                                    normal: {
+                                        color: '#3F485B',
+                                        width: 0.7,
+                                        opacity:0.25
+
+                                    }
+                                },
+                                progressiveThreshold: 500,
+                                progressive: 200
+                            },
+
                             {
                                 name: 'metro',
                                 type: 'lines',

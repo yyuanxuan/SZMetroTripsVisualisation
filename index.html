@@ -54,7 +54,7 @@
                         geo: {
                             map: 'shenzhen',
                             coordinateSystem: 'geo',
-                            center:[114.080,22.612],
+                            center:[114.040,22.612],
                             zlevel: 1,
                             silent: true,
                             roam: true,
@@ -77,27 +77,7 @@
 
 
                         series: [
-                            {
-                                name: 'water',
-                                type: 'map',
-                                map: 'water',
-                                coordinateSystem: 'geo',
-                                zlevel: 1,
-                                silent: true,
-                                roam: true,
-                                center:[114.080,22.612],
-                                zoom: 2.8,
-                                scaleLimit:{
-                                    max:8, min:1,
-                                },
-                                itemStyle: {
-                                    normal: {
-                                        areaColor: '#125488',
-                                        borderColor: '#125488'
-                                    }
-                                },
-                                aspectScale: 1,//aspectScale设置为1时,没有额外的投影变形,保持wgs84
-                            },
+
 
 
 
@@ -123,6 +103,27 @@
                             },
 
                             {
+                                name: 'water',
+                                type: 'map',
+                                map: 'water',
+                                coordinateSystem: 'geo',
+                                zlevel: 1,
+                                silent: true,
+                                roam: true,
+                                center:[114.040,22.612],
+                                zoom: 2.8,
+                                scaleLimit:{
+                                    max:8, min:1,
+                                },
+                                itemStyle: {
+                                    normal: {
+                                        areaColor: '#125488',
+                                        borderColor: '#125488'
+                                    }
+                                },
+                                aspectScale: 1,//aspectScale设置为1时,没有额外的投影变形,保持wgs84
+                            },
+                            {
                                 name: 'metro',
                                 type: 'lines',
                                 coordinateSystem: 'geo',
@@ -146,7 +147,6 @@
                                 name: 'Travel1',
                                 type: 'lines',
                                 coordinateSystem: 'geo',
-                                silent: true,
 
                                 zlevel: 2,
                                 data: flowdata.level1trips,
@@ -174,7 +174,6 @@
                                 name: 'Travel2',
                                 type: 'lines',
                                 coordinateSystem: 'geo',
-                                silent: true,
 
                                 zlevel: 2,
                                 data: flowdata.level2trips,
@@ -194,7 +193,7 @@
                                     symbolSize: 2,
                                     color: '#FFCC66',
                                     trailLength:0.1,
-                                    constantSpeed:50
+                                    constantSpeed:40
                                 },
                             },
 
@@ -203,7 +202,6 @@
                                 name: 'Travel3',
                                 type: 'lines',
                                 coordinateSystem: 'geo',
-                                silent: true,
 
                                 zlevel: 3,
                                 data: flowdata.level3trips,
@@ -223,7 +221,7 @@
                                     symbolSize: 1.2,
                                     color: '#E6CC8F',
                                     trailLength:0,
-                                    constantSpeed:50
+                                    constantSpeed:40
                                 },
                             },
 
